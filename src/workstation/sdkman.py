@@ -25,7 +25,7 @@ class SDKManInstaller:
 
     def _install_sdkman(self):
         self._remove_sdkman()
-        cmd = f'xport SDKMAN_DIR="{SDKMAN_ROOT}" && curl -s "https://get.sdkman.io?rcupdate=false" | bash'
+        cmd = f'export SDKMAN_DIR="{SDKMAN_ROOT}" && curl -s "https://get.sdkman.io?rcupdate=false" | bash'
         self.os_manager.run(cmd)
 
     def _install_java(self, java_version: str):
