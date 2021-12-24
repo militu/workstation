@@ -1,8 +1,12 @@
 # Workstation
 
 ![Tests](https://github.com/militu/workstation/actions/workflows/tests.yml/badge.svg)
+![Docs](https://github.com/militu/workstation/actions/workflows/documentation.yml/badge.svg)
 
-TODO
+### 🕮 Documentation
+
+For detailed documentation (todo), please see [here](https://militu.github.io/workstation/)
+
 
 ```shell
 pip install workstation
