@@ -1,5 +1,7 @@
 # Workstation
 
+![Tests](https://github.com/militu/workstation/actions/workflows/tests.yml/badge.svg)
+
 TODO
 
 ```shell
