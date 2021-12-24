@@ -11,7 +11,7 @@ For detailed documentation (todo), please see [here](https://militu.github.io/wo
 pip install workstation
 ```
 
-First setup for development
+### 🪛 Develop
 
 First install workstation
 
