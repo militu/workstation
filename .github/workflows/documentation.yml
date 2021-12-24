@@ -1,5 +1,8 @@
 name: Documentation
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
 jobs:
   docs:
     name: Build documentation
@@ -10,8 +13,8 @@ jobs:
         with:
           python-version: "3.8"
       - name: Install tools using pip
-      - run: |
-          pip install --constraint=.github/workflows/constraints.txt pip nox
+        run: |
+          pip install --constraint=.github/workflows/constraints.txt pip nox nox-poetry poetry
       - name: Build documentation
         run: |
           nox -s build-docs -- gh-deploy --force --message "[skip ci] Deployed {sha} with MkDocs version: {version}"
