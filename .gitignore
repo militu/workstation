@@ -9,7 +9,6 @@
 /src/*.egg-info/
 __pycache__/
 # Byte-compiled / optimized / DLL files
-__pycache__/
 *.py[cod]
 *.pyc
 *$py.class
@@ -111,6 +110,3 @@ ENV/
 
 # mkdocs documentation
 /site
-
-# mypy
-.mypy_cache/
