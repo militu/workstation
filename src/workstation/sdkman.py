@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from workstation import RESOURCES_PATH
-from workstation.os_manager import full_path
 from workstation.os_manager import OSManager
 from workstation.zsh import ZSH_CONFIG_PATH
 

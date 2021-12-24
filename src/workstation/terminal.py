@@ -18,7 +18,9 @@ class TilixInstaller:
 
     def _install_custom_theme(self):
         self.os_manager.run(f"dconf load /com/gexperts/Tilix/ <{DCONF_LOCATION}")
-        shutil.rmtree(os.path.expanduser("~/.local/share/fonts-tmp"), ignore_errors=True)
+        shutil.rmtree(
+            os.path.expanduser("~/.local/share/fonts-tmp"), ignore_errors=True
+        )
         os.system(
             f"git clone https://github.com/romkatv/powerlevel10k-media.git {full_path('.local/share/fonts-tmp/')}"
         )
@@ -30,7 +32,9 @@ class TilixInstaller:
                     os.path.join(os.path.expanduser("~/.local/share/fonts-tmp/"), x),
                     os.path.join(os.path.expanduser("~/.local/share/fonts"), x),
                 )
-        shutil.rmtree(os.path.expanduser("~/.local/share/fonts-tmp"), ignore_errors=True)
+        shutil.rmtree(
+            os.path.expanduser("~/.local/share/fonts-tmp"), ignore_errors=True
+        )
 
     def run(self):
         self._install_tilix()

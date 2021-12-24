@@ -6,7 +6,6 @@ from pathlib import Path
 from loguru import logger
 
 from workstation import RESOURCES_PATH
-from workstation.os_manager import full_path
 from workstation.os_manager import OSManager
 
 ZSHRC_PATH = os.path.expanduser("~/.zshrc")

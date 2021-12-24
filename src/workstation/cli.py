@@ -2,10 +2,10 @@ import click
 import distro
 
 from workstation.nvm import NVMInstaller
+from workstation.os_manager import Fedora
 from workstation.python import PythonInstaller
 from workstation.sdkman import SDKManInstaller
 from workstation.terminal import TilixInstaller
-from workstation.os_manager import Fedora
 from workstation.zsh import ZSHInstaller
 
 

@@ -5,7 +5,7 @@ description = ""
 authors = ["Victor Mazzeo <victor.mazzeo@groupeseloger.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 loguru = "^0.5.3"
 click = "^8.0.3"
 distro = "^1.6.0"

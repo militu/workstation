@@ -14,7 +14,9 @@ class MiscellaneousInstaller:
     def _install_jetbrains_toolbox(self):
         if self.os_manager.operating_system == OS_FEDORA:
             os_manager: Fedora = self.os_manager
-            r = requests.get("https://data.services.jetbrains.com//products/releases?code=TBA&latest=true&type=release")
+            r = requests.get(
+                "https://data.services.jetbrains.com//products/releases?code=TBA&latest=true&type=release"
+            )
             url = r.json()["TBA"][0]["downloads"]["linux"]["link"]
             os_manager.tgz_install_from_url(url, "jetbrains-toolbox")
 
