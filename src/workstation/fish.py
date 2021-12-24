@@ -8,9 +8,9 @@
 #
 # from workstation.utils import full_path, OSManager
 #
-# fishRC_PATH = full_path(".fishrc")
-# fish_CONFIG_PATH = full_path(".configs")
-# OH_MY_FISH_PATH = full_path(".oh-my-fish")
+# fishRC_PATH = os.path.expanduser("~/.fishrc")
+# fish_CONFIG_PATH = os.path.expanduser("~/.configs")
+# OH_MY_FISH_PATH = os.path.expanduser("~/.oh-my-fish")
 #
 # RESOURCES_PATH = str(pkg_resources.path("workstation", "resources"))
 #
@@ -59,7 +59,7 @@
 #               f"/powerlevel10k"
 #         self.os_manager.run(cmd)
 #         p10k_location = os.path.join(RESOURCES_PATH, ".p10k.fish")
-#         shutil.copy(p10k_location, full_path(".p10k.fish"))
+#         shutil.copy(p10k_location, os.path.expanduser("~/.p10k.fish"))
 #
 #     def change_shell(self):
 #         logger.info("Changing default shell to fish")

@@ -28,7 +28,6 @@ mkdocs-redirects = "^1.0.3"
 mkdocs-material = "^8.0.4"
 mkdocs-macros-plugin = "^0.6.0"
 commitizen = "^2.19.0"
-locust = "^2.5.0"
 python-semantic-release = "^7.23.0"
 
 [tool.semantic_release]

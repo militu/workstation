@@ -5,13 +5,13 @@ from pathlib import Path
 from typing import List
 
 from workstation import RESOURCES_PATH
-from workstation.utils import full_path
-from workstation.utils import OSManager
+from workstation.os_manager import full_path
+from workstation.os_manager import OSManager
 from workstation.zsh import ZSH_CONFIG_PATH
 
 PY_SYS = "/usr/bin/python3"
-POETRY_HOME = full_path(".poetry")
-PYENV_ROOT = full_path(".pyenv")
+POETRY_HOME = os.path.expanduser("~/.poetry")
+PYENV_ROOT = os.path.expanduser("~/.pyenv")
 PYENV_ZSH_CONFIG_LOCATION = os.path.join(ZSH_CONFIG_PATH, "pyenv.zsh")
 PYENV_ZSH_CONFIG_RESOURCE_LOCATION = os.path.join(RESOURCES_PATH, "zshrc", "pyenv.zsh")
 VIRTUALENV_ZSH_CONFIG_LOCATION = os.path.join(ZSH_CONFIG_PATH, "virtualenv.zsh")

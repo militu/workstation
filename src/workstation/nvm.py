@@ -4,11 +4,11 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from workstation import RESOURCES_PATH
-from workstation.utils import full_path
-from workstation.utils import OSManager
+from workstation.os_manager import full_path
+from workstation.os_manager import OSManager
 from workstation.zsh import ZSH_CONFIG_PATH
 
-NVM_ROOT = full_path(".nvm")
+NVM_ROOT = os.path.expanduser("~/.nvm")
 NVM_ZSH_CONFIG_LOCATION = os.path.join(ZSH_CONFIG_PATH, "nvm.zsh")
 NVM_ZSH_CONFIG_RESOURCE_LOCATION = os.path.join(RESOURCES_PATH, "zshrc", "nvm.zsh")
 

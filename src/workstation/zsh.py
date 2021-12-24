@@ -6,12 +6,12 @@ from pathlib import Path
 from loguru import logger
 
 from workstation import RESOURCES_PATH
-from workstation.utils import full_path
-from workstation.utils import OSManager
+from workstation.os_manager import full_path
+from workstation.os_manager import OSManager
 
-ZSHRC_PATH = full_path(".zshrc")
-ZSH_CONFIG_PATH = full_path(".config/zsh/config.d")
-OH_MY_ZSH_PATH = full_path(".oh-my-zsh")
+ZSHRC_PATH = os.path.expanduser("~/.zshrc")
+ZSH_CONFIG_PATH = os.path.expanduser("~/.config/zsh/config.d")
+OH_MY_ZSH_PATH = os.path.expanduser("~/.oh-my-zsh")
 
 
 @dataclass
@@ -65,7 +65,7 @@ class ZSHInstaller:
         )
         self.os_manager.run(cmd)
         p10k_location = os.path.join(RESOURCES_PATH, ".p10k.zsh")
-        shutil.copy(p10k_location, full_path(".p10k.zsh"))
+        shutil.copy(p10k_location, os.path.expanduser("~/.p10k.zsh"))
 
     def _change_shell(self):
         logger.info("Changing default shell to zsh")

@@ -4,11 +4,11 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from workstation import RESOURCES_PATH
-from workstation.utils import full_path
-from workstation.utils import OSManager
+from workstation.os_manager import full_path
+from workstation.os_manager import OSManager
 from workstation.zsh import ZSH_CONFIG_PATH
 
-SDKMAN_ROOT = full_path(".sdkman")
+SDKMAN_ROOT = os.path.expanduser("~/.sdkman")
 SDKMAN_ZSH_CONFIG_LOCATION = os.path.join(ZSH_CONFIG_PATH, "sdkman.zsh")
 SDKMAN_ZSH_CONFIG_RESOURCE_LOCATION = os.path.join(
     RESOURCES_PATH, "zshrc", "sdkman.zsh"

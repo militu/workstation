@@ -3,8 +3,8 @@ import shutil
 from dataclasses import dataclass
 
 from workstation import RESOURCES_PATH
-from workstation.utils import full_path
-from workstation.utils import OSManager
+from workstation.os_manager import full_path
+from workstation.os_manager import OSManager
 
 DCONF_LOCATION = os.path.join(RESOURCES_PATH, "tilix.dconf")
 
@@ -18,19 +18,19 @@ class TilixInstaller:
 
     def _install_custom_theme(self):
         self.os_manager.run(f"dconf load /com/gexperts/Tilix/ <{DCONF_LOCATION}")
-        shutil.rmtree(full_path(".local/share/fonts-tmp"), ignore_errors=True)
+        shutil.rmtree(os.path.expanduser("~/.local/share/fonts-tmp"), ignore_errors=True)
         os.system(
             f"git clone https://github.com/romkatv/powerlevel10k-media.git {full_path('.local/share/fonts-tmp/')}"
         )
-        os.makedirs(full_path(".local/share/fonts"), exist_ok=True)
-        files = os.listdir(full_path(".local/share/fonts-tmp/"))
+        os.makedirs(os.path.expanduser("~/.local/share/fonts"), exist_ok=True)
+        files = os.listdir(os.path.expanduser("~/.local/share/fonts-tmp/"))
         for x in files:
             if x.startswith("Meslo"):
                 shutil.copyfile(
-                    os.path.join(full_path(".local/share/fonts-tmp/"), x),
-                    os.path.join(full_path(".local/share/fonts"), x),
+                    os.path.join(os.path.expanduser("~/.local/share/fonts-tmp/"), x),
+                    os.path.join(os.path.expanduser("~/.local/share/fonts"), x),
                 )
-        shutil.rmtree(full_path(".local/share/fonts-tmp"), ignore_errors=True)
+        shutil.rmtree(os.path.expanduser("~/.local/share/fonts-tmp"), ignore_errors=True)
 
     def run(self):
         self._install_tilix()
