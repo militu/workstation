@@ -1,4 +1,4 @@
-name: tests
+name: Tests
 on: [push, pull_request]
 jobs:
   tests:
@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2.4.0
       - uses: actions/setup-python@v2.3.1
         with:
-          python-version: 3.8
+          python-version: "3.8"
       - name: Install tools using pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip nox nox-poetry poetry

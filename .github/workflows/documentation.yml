@@ -1,0 +1,17 @@
+name: Documentation
+on: [push, pull_request]
+jobs:
+  docs:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - uses: actions/setup-python@v2.3.1
+        with:
+          python-version: "3.8"
+      - name: Install tools using pip
+      - run: |
+          pip install --constraint=.github/workflows/constraints.txt pip nox
+      - name: Build documentation
+        run: |
+          nox -s build-docs -- gh-deploy --force --message "[skip ci] Deployed {sha} with MkDocs version: {version}"
