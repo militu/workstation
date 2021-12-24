@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "workstation"
 version = "0.1.0"
-description = ""
+description = "Python lib for my personal workstation setup"
 authors = ["Victor Mazzeo <victor.mazzeo@groupeseloger.com>"]
 
 [tool.poetry.dependencies]
