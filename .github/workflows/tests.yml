@@ -21,13 +21,9 @@ jobs:
       - name: Run test suite using Nox
         run: nox --force-color
 
-      - name: Build documentation to check for build errors
-        uses: actions/checkout@v2.4.0
-        with:
-          ref: gh-pages
-          fetch-depth: 1
-
+      - name: Run test suite using Nox
       - run: |
+          git fetch origin gh-pages --depth=1
           git config user.name "ci-mkdocs-bot"
           git config user.email "ci-mkdocs-bot@example.com"
           nox -s build-docs -- deploy X.X.X
