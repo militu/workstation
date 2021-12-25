@@ -1,12 +1,20 @@
 [tool.poetry]
 name = "workstation-cli"
-version = "0.3.1.dev.1640422321"
+version = "0.1.0"
 description = "Python lib for my personal workstation setup"
 authors = ["Victor Mazzeo <victor.mazzeo@groupeseloger.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/militu/workstation-cli"
+repository = "https://github.com/militu/workstation-cli"
+documentation = "https://militu.github.io/workstation-cli"
 
 packages = [
     { include = "workstation", from = "src" },
 ]
+
+[tool.poetry.urls]
+Changelog = "https://github.com/militu/workstation-cli/releases"
 
 [tool.poetry.dependencies]
 python = "^3.8"
