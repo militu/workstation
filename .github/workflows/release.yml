@@ -25,9 +25,9 @@ jobs:
           pip install --constraint=.github/workflows/constraints.txt pip
           pip --version
 
-      - name: Install Poetry
+      - name: Install tools using pip
         run: |
-          pip install --constraint=.github/workflows/constraints.txt poetry
+          pip install --constraint=.github/workflows/constraints.txt pip nox nox-poetry poetry
           poetry --version
 
       - name: Check if there is a parent commit
@@ -69,16 +69,26 @@ jobs:
           password: ${{ secrets.TEST_PYPI_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
 
+      - name: Fetch gh-pages for documentation
+        uses: actions/checkout@v2
+        with:
+          ref: my-branch
+          fetch-depth: 2
+
       - name: Publish documentation for latest
         if: "! steps.check-version.outputs.tag"
         run: |
+          git config user.name ci-mkdocs-bot
+          git config user.email ci-mkdocs-bot@example.com
           nox -s build-docs -- deploy -p --u vmaster latest -t "master (latest)"
 
       - name: Publish documentation for stable
         if: steps.check-version.outputs.tag
         run: |
+          git config user.name ci-mkdocs-bot
+          git config user.email ci-mkdocs-bot@example.com
           version=v$(poetry version -s) &&
-          nox -s build-docs -- mike deploy -p --u $version stable -t "$version(stable)"
+          nox -s build-docs -- mike deploy -p --u $version stable -t "$version (stable)"
 
       - name: Publish the release notes
         uses: release-drafter/release-drafter@v5.15.0
