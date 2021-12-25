@@ -98,3 +98,4 @@ extra_javascript:
 # Page tree
 nav:
   - "Home": "index.md"
+  - "Contributing": "contributing.md"
