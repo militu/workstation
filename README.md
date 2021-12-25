@@ -1,11 +1,12 @@
 # Workstation
 
-![Tests](https://github.com/militu/workstation/actions/workflows/tests.yml/badge.svg)
-![Docs](https://github.com/militu/workstation/actions/workflows/documentation.yml/badge.svg)
+![Tests](https://github.com/militu/workstation-cli/actions/workflows/tests.yml/badge.svg)
+![Release](https://github.com/militu/workstation-cli/actions/workflows/release.yml/badge.svg)
+![Python Version](https://img.shields.io/pypi/pyversions/workstation-cli)
 
 ### 🕮 Documentation
 
-For detailed documentation (todo), please see [here](https://militu.github.io/workstation/)
+For detailed documentation (todo), please see [here](https://militu.github.io/workstation-cli/)
 
 ```shell
 pip install workstation --user
