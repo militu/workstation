@@ -9,7 +9,7 @@ repo_url: https://github.com/militu/workstation
 theme:
   name: material
   language: "en"
-
+  custom_dir: overrides
   # Don't include MkDocs' JavaScript
   include_search_page: false
   search_index_only: true
@@ -61,6 +61,9 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/militu/workstation
+  version:
+    provider: mike
+    default: stable
 
 # Extensions
 markdown_extensions:

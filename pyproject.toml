@@ -22,6 +22,7 @@ loguru = "0.5.3"
 click = "^8.0.3"
 distro = "^1.6.0"
 wget = "^3.2"
+mike = "^1.1.2"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

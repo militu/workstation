@@ -30,7 +30,7 @@ Request features on the [Issue Tracker](https://github.com/militu/workstation-cl
 
 ## How to set up your development environment
 
-!!! note "Prefered method"
+!!! note "Preferred method"
 
     Install the package and setup your workstation
     ```shell
@@ -47,24 +47,75 @@ If you don't want to setup your workstation with this package make sure to have 
 Fork the repository on [GitHub](https://github.com/militu/workstation-cli),
 and clone the fork to your local machine.
 
+!!! warning "On first install"
+
+    ```shell
+    pyenv install -s 3.8.12
+    pyenv local 3.8.12
+    poetry lock
+    nox -s pre-commit -- install
+    nox -s pre-commit -- install --hook-type commit-msg
+    ```
+
+## How to run your code
+
+First, install the project and its dependencies to the Poetry
+environment:
+
 ```shell
-pyenv install -s 3.8.12
-pyenv local 3.8.12
-poetry lock
-nox -s pre-commit -- install
-nox -s pre-commit -- install --hook-type commit-msg
+poetry install
 ```
+
+=== "Run interactive session"
+
+    ```shell
+    poetry run python
+    ```
+
+=== "Invoke command-line interface"
+
+    ```shell
+    poetry run workstation-install
+    ```
 
 ## How to test the project
 
-Please refer to the [User
-Guide](https://cookiecutter-hypermodern-python.readthedocs.io/en/latest/guide.html#how-to-test-your-project)
-for instructions on how to run the test suite locally.
+Run the test suite using `Nox`:
+
+```console
+$ nox -r
+```
 
 ## How to submit changes
 
+Create a branch for your changes:
+
+```shell
+git switch --create my-new-branch main
+```
+
+Create a series of small, single-purpose commits:
+
+```shell
+git add <files>
+git commit
+```
+
+Push your branch to GitHub:
+
+```shell
+git push --set-upstream origin my-topic-branch
+```
+
 Open a [pull request](https://github.com/militu/workstation-cli/pulls)
 to submit changes to this project.
+
+1.  Select your branch from the _Branch_ menu.
+2.  Click **New pull request**.
+3.  Enter the title for the pull request.
+4.  Enter a description for the pull request.
+5.  Apply a `label`
+6.  Click **Create pull request**.
 
 Your pull request needs to meet the following guidelines for acceptance:
 
@@ -73,15 +124,9 @@ Your pull request needs to meet the following guidelines for acceptance:
 - If your changes add functionality, update the documentation
   accordingly.
 
-Feel free to submit early, though---we can always iterate on this.
+Release notes are pre-filled with the titles of merged pull requests.
 
-It is recommended to open an issue before starting work on anything.
-This will allow a chance to talk it over with the owners and validate
-your approach.
-
-## How to accept changes
-
-_You need to be a project maintainer to accept changes._
+## How to accept a pull request
 
 Before accepting a pull request, go through the following checklist:
 
@@ -89,33 +134,46 @@ Before accepting a pull request, go through the following checklist:
 - The PR must have a descriptive title.
 - The PR should be labelled with the kind of change.
 
-To merge the pull request, follow these steps:
+If all checks are marked as passed, merge the pull request using the
+squash-merge strategy:
 
-1.  Click **Squash and Merge**. (Select this option from the dropdown
-    menu of the merge button, if it is not shown.)
+1.  Click **Squash and Merge**.
 2.  Click **Confirm squash and merge**.
 3.  Click **Delete branch**.
 
 ## How to make a release
-
-_You need to be a project maintainer to make a release._
 
 Before making a release, go through the following checklist:
 
 - All pull requests for the release have been merged.
 - The default branch passes all checks.
 
-Releases are made by publishing a GitHub Release. A draft release is
-being maintained based on merged pull requests. To publish the release,
-follow these steps:
+Releases are triggered by a version bump on the default branch.
+Do this in a separate pull request:
 
-1.  Click **Edit** next to the draft release.
-2.  Enter a tag with the new version.
-3.  Enter the release title, also the new version.
-4.  Edit the release description, if required.
-5.  Click **Publish Release**.
+1. Switch to a branch.
+2. Bump the version using the `release` session in `nox`.
+3. Push to GitHub.
+4. Open a pull request.
+5. Merge the pull request.
 
-After publishing the release, the following automated steps are
-triggered:
+The individual steps for bumping the version are:
 
-- The Git tag is applied to the repository.
+```shell
+git switch --create release main
+nox -s release -- --patch
+git push origin release
+```
+
+To let `semantic-release` decide what version number to update to, use:
+
+```shell
+nox -s release
+```
+
+Before merging the pull request for the release,
+go through the following checklist:
+
+- The pull request passes all checks.
+- The development release on TestPyPI\_ looks good.
+- All pull requests for the release have been merged.
