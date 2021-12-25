@@ -74,19 +74,18 @@ jobs:
         with:
           ref: gh-pages
           fetch-depth: 1
+        run: |
+          git config user.name ci-mkdocs-bot
+          git config user.email ci-mkdocs-bot@example.com
 
       - name: Publish documentation for latest
         if: "! steps.check-version.outputs.tag"
         run: |
-          git config user.name ci-mkdocs-bot
-          git config user.email ci-mkdocs-bot@example.com
           nox -s build-docs -- deploy -p --u vmaster latest -t "master (latest)"
 
       - name: Publish documentation for stable
         if: steps.check-version.outputs.tag
         run: |
-          git config user.name ci-mkdocs-bot
-          git config user.email ci-mkdocs-bot@example.com
           version=v$(poetry version -s) &&
           nox -s build-docs -- mike deploy -p --u $version stable -t "$version (stable)"
 
