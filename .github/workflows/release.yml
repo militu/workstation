@@ -70,7 +70,7 @@ jobs:
           repository_url: https://test.pypi.org/legacy/
 
       - name: Fetch gh-pages for documentation
-      - run: |
+        run: |
           git fetch origin gh-pages --depth=1
           git config user.name ci-mkdocs-bot
           git config user.email ci-mkdocs-bot@example.com
