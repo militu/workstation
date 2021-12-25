@@ -63,6 +63,7 @@ extra:
       link: https://github.com/militu/workstation
   version:
     provider: mike
+    default: stable
 
 # Extensions
 markdown_extensions:
