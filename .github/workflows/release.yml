@@ -70,10 +70,10 @@ jobs:
           repository_url: https://test.pypi.org/legacy/
 
       - name: Fetch gh-pages for documentation
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.4.0
         with:
-          ref: my-branch
-          fetch-depth: 2
+          ref: gh-pages
+          fetch-depth: 1
 
       - name: Publish documentation for latest
         if: "! steps.check-version.outputs.tag"

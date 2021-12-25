@@ -9,16 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
+
       - uses: actions/setup-python@v2.3.1
         with:
           python-version: "3.8"
+
       - name: Install tools using pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip nox nox-poetry poetry
+
       - name: Run test suite using Nox
         run: nox --force-color
+
       - name: Build documentation to check for build errors
-        uses: actions/checkout@master
+        uses: actions/checkout@v2.4.0
+        with:
+          ref: gh-pages
+          fetch-depth: 1
         run: |
           git config user.name ci-mkdocs-bot
           git config user.email ci-mkdocs-bot@example.com
