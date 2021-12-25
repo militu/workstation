@@ -1,14 +1,19 @@
 [tool.poetry]
-name = "workstation"
-version = "0.1.0"
+name = "workstation-cli"
+version = "0.3.1.dev.1640422321"
 description = "Python lib for my personal workstation setup"
 authors = ["Victor Mazzeo <victor.mazzeo@groupeseloger.com>"]
 
+packages = [
+    { include = "workstation", from = "src" },
+]
+
 [tool.poetry.dependencies]
 python = "^3.8"
-loguru = "^0.5.3"
+loguru = "0.5.3"
 click = "^8.0.3"
 distro = "^1.6.0"
+wget = "^3.2"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
