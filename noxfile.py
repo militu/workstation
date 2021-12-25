@@ -122,19 +122,20 @@ def precommit(session: Session) -> None:
 @session(name="build-docs", python=default_python_version, reuse_venv=False)
 def build_docs(session: Session) -> None:
     """Build the documentation."""
-    args = session.posargs or ["build"]
+    args = session.posargs
     session.install(
         "mkdocs-minify-plugin",
         "mkdocs-redirects",
         "mkdocs-material",
         "mkdocs-macros-plugin",
+        "mike",
     )
 
     build_dir = Path("site")
     if build_dir.exists():
         shutil.rmtree(build_dir)
 
-    session.run("mkdocs", *args)
+    session.run("mike", *args)
 
 
 @session(name="release", python=default_python_version, reuse_venv=False)

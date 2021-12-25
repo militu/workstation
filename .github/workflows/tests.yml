@@ -17,3 +17,5 @@ jobs:
           pip install --constraint=.github/workflows/constraints.txt pip nox nox-poetry poetry
       - name: Run test suite using Nox
         run: nox --force-color
+      - name: Build documentation to check for build errors
+        run: nox -s build-docs -- deploy X.X.X
