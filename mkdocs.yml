@@ -61,6 +61,8 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/militu/workstation
+  version:
+    provider: mike
 
 # Extensions
 markdown_extensions:
