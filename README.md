@@ -22,3 +22,11 @@ poetry lock
 nox -s pre-commit -- install
 nox -s pre-commit -- install --hook-type commit-msg
 ```
+
+Release
+
+```shell
+git switch --create release main
+nox -s release -- --patch
+git push origin release
+```

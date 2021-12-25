@@ -140,7 +140,7 @@ def build_docs(session: Session) -> None:
 @session(name="release", python=default_python_version, reuse_venv=False)
 def release(session: Session) -> None:
     """Build the documentation."""
-    args = session.posargs or ["publish"]
+    args = session.posargs
     session.install("python-semantic-release")
 
-    session.run("semantic-release", *args)
+    session.run("semantic-release", "version", *args)
