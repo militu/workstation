@@ -74,7 +74,8 @@ jobs:
         with:
           ref: gh-pages
           fetch-depth: 1
-        run: |
+
+      - run: |
           git config user.name ci-mkdocs-bot
           git config user.email ci-mkdocs-bot@example.com
 
