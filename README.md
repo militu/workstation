@@ -8,7 +8,7 @@
 For detailed documentation (todo), please see [here](https://militu.github.io/workstation/)
 
 ```shell
-pip install workstation
+pip install workstation --user
 ```
 
 ### 🪛 Develop
