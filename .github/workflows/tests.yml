@@ -27,6 +27,6 @@ jobs:
           ref: gh-pages
           fetch-depth: 1
         run: |
-          git config user.name ci-mkdocs-bot
-          git config user.email ci-mkdocs-bot@example.com
+          git config user.name "ci-mkdocs-bot"
+          git config user.email "ci-mkdocs-bot@example.com"
           nox -s build-docs -- deploy X.X.X
